@@ -15,6 +15,7 @@ $(document).ready(function() {
     $('#plants').append("<li>" + newPlant.name + "</li>");
     let problem = null;
     newPlant.plantLife();
+    
     try {
       const issue = newPlant.problem;
       if (issue instanceof Error) {
@@ -34,5 +35,5 @@ $('#water').click(function() {
     newPlant.water();
   });
 
-  
+
 });
