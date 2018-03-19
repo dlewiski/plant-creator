@@ -36,18 +36,24 @@ describe('Plant', function() {
   });
 
   it('should have health of 55 in 10 seconds', function() {
-    apple.growInterval();
-    jasmine.clock().tick(10000);
-    expect(apple.health).toEqual(55);
+    apple.plantLife();
+    jasmine.clock().tick(20000);
+    expect(apple.health).toEqual(45);
   });
 
   it('should have 2 fruit at 80 health', function() {
     let apple = new Plant('Apple');
     // apple.height = 0;
-    apple.growInterval();
-    jasmine.clock().tick(80000);
+    apple.water();
+    jasmine.clock().tick(60000);
     console.log(apple);
-    // apple.growFruit();
-    expect(apple.fruit).toEqual(3);
+    expect(apple.fruit).toEqual(2);
+  });
+
+  it('should have 2 fruit at 80 health', function() {
+    let apple = new Plant('Apple');
+    apple.plantLife();
+    jasmine.clock().tick(180000);
+    console.log('error happen', this.height)
   });
 })

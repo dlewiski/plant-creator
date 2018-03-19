@@ -14,7 +14,38 @@ export class Plant {
     }, 1000);
   }
 
-  growInterval() {
+  plantLife() {
+    setInterval(() => {
+      const error = "PLANT IS ABOUT TO DIEEEEEE";
+      this.health -= 5;
+      this.height -=1;
+      if (this.health < 10) {
+        return new Error(error);
+        console.log('here?')
+      }
+    }, 20000);
+  }
+
+//   try {
+//     const issue = plantLife()
+//     if (issue instanceof Error) {
+//       console.log(issue.message);
+//       throw Error('plant is dying')
+//     } else {
+//       console.log('plant not dying no error');
+//     }
+//     catch (error) {
+//     console.error(`Problem here is the error message ${error.message}`)
+//   }
+// }
+
+  growFruit() {
+    if ((this.health >= 70) && (this.health % 10 == 0)) {
+      this.fruit++;
+    }
+  }
+
+  water() {
     setInterval(() => {
       this.health += 5;
       this.height+=2;
@@ -23,11 +54,5 @@ export class Plant {
         this.fruit++;
       }
     }, 10000);
-  }
-
-  growFruit() {
-    if ((this.health >= 70) && (this.health % 10 == 0)) {
-      this.fruit++;
-    }
   }
 }
