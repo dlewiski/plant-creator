@@ -13,6 +13,7 @@ $(document).ready(function() {
     let name = $('#name').val();
     newPlant = new Plant(name);
     newPlant.growTimeout();
+    newPlant.plantLife();
     $('#plants').append("<li>" + newPlant.name + "</li>");
     newPlant.checkHealth();
   });
@@ -82,9 +83,6 @@ $(document).ready(function() {
 
   $('#weatherLocation2').click(function() {
     let myAPIKey = process.env.API_KEY
-    console.log(myAPIKey)
-    let myAPIKey2 = process.env.API_KEY.length
-    console.log(myAPIKey2)
     let city = $('#location2').val();
     $('location2').val('');
     let request = new XMLHttpRequest();
