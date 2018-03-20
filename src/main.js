@@ -112,4 +112,8 @@ $(document).ready(function() {
 
   });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 437f2f2c994f0fbce54917e5054529479653aada
 });
