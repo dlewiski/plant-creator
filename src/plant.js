@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export class Plant {
   constructor(name) {
     this.health = 50;
@@ -48,6 +50,12 @@ export class Plant {
         console.log('fruit coming?');
         this.fruit++;
       }
+    }, 1000);
+  }
+
+  checkHealth() {
+    setInterval(() => {
+      $('.displayHealth').text('The health of '+ this.name +' is currenctly '+ this.health);
     }, 1000);
   }
 }

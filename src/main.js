@@ -4,16 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import './styles.css';
 // import 'bootstrap';
 
-let newPlant = null
+
 
 $(document).ready(function() {
+  let newPlant = null;
   $('#new-plant').submit(function(event) {
     event.preventDefault();
     let name = $('#name').val();
     newPlant = new Plant(name);
     newPlant.growTimeout();
     $('#plants').append("<li>" + newPlant.name + "</li>");
+    newPlant.checkHealth();
   });
+  // $('.displayHealth').text(`The health of ${newPlant.name} is ${newPlant.checkHealth()}`)
 
   $('#water').click(function() {
     console.log(newPlant)
@@ -44,7 +47,8 @@ $(document).ready(function() {
   // })
 
   $('#info').click(function() {
-    console.log(newPlant)
+    $('.displayHealth').text(`The health of ${newPlant.name} is ` + newPlant.health);
+    console.log(newPlant);
   });
 
   $('#weatherLocation').click(function() {
