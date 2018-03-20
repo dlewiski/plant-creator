@@ -13,8 +13,15 @@ $(document).ready(function() {
     newPlant = new Plant(name);
     newPlant.growTimeout();
     $('#plants').append("<li>" + newPlant.name + "</li>");
-    let problem = null;
-    newPlant.plantLife();
+  });
+
+  $('#water').click(function() {
+    console.log(newPlant)
+      newPlant.water();
+    });
+
+  $('#drought').click(function() {
+    newPlant.drought();
     try {
       const issue = newPlant.problem;
       if (issue instanceof Error) {
@@ -29,10 +36,23 @@ $(document).ready(function() {
     }
   });
 
-$('#water').click(function() {
-  console.log(newPlant)
-    newPlant.water();
+  // $('#no_drought').click(function() {
+  //   newPlant.noDrought();
+  //   console.log('drought ended');
+  // })
+
+  $('#info').click(function() {
+    console.log(newPlant)
   });
 
-  
+  $('#weather').click(function() {
+
+    })
+  })
+
+
+
+
+
+
 });
