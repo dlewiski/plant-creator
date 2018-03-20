@@ -43,15 +43,17 @@ export class Plant {
   // }
 
   growFruit() {
-    if ((this.health >= 2001000) && (this.health % 1000 == 0)) {
+    setInterval(() => {
+    if ((this.health >= 2010000) && (this.health % 1 == 0)) {
       this.fruit++;
-    }
+      }
+    },10000);
   }
 
   water() {
       this.health += 5000;
       this.height +=2000;
-      if ((this.health >= 70) && (this.health % 10 == 0)) {
+      if ((this.health >= 2010000) && (this.health % 1 == 0)) {
         console.log('fruit coming?');
         this.fruit++;
     }
@@ -63,6 +65,11 @@ export class Plant {
     }, 1);
   }
 
+  fruitBasket() {
+    setInterval(() => {
+      $('.fruit-basket').text(`You have this many ${this.name} fruit ${this.fruit} !`)
+    }, 1000);
+  }
 
 
 

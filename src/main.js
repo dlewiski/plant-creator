@@ -16,6 +16,8 @@ $(document).ready(function() {
     newPlant.plantLife();
     $('#plants').append("<li>" + newPlant.name + "</li>");
     newPlant.checkHealth();
+    newPlant.growFruit();
+    newPlant.fruitBasket();
   });
   // $('.displayHealth').text(`The health of ${newPlant.name} is ${newPlant.checkHealth()}`)
 
