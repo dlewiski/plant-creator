@@ -49,20 +49,14 @@ $(document).ready(function() {
     let city = $('#location').val();
     $('#location').val("");
     $.ajax({
-      url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e53984fe138f468582129bb1286abf8d&units=imperial`,
+      url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e53984fe138f468582129bb1286abf8d`,
       type: 'GET',
       data: {
         format: 'json'
       },
       success: function(response) {
         $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
-        $('.showTemp').text(`The temperature in Fahrenheit is ${response.main.temp_max}.`);
-        $('.clouds').text(`Some kind of cloud info we don't yet understand ${response.clouds.all}`);
-        if (response.main.temp >= 250) {
-          $('.tempMessage').text("damn its hot out");
-        } else {
-          $('.tempMessage').text("cold AF");
-        }
+        $('.showTemp').text(`The temperature in Kelvin is ${response.main.temp}.`);
       },
       error: function() {
         $('.errors').text("There was an error processing your request. Please try again.");
