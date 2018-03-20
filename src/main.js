@@ -18,10 +18,12 @@ $(document).ready(function() {
   $('#water').click(function() {
     console.log(newPlant)
       newPlant.water();
+      $('.displayHealth').text(`The health of ${newPlant.name} is currenctly ${newPlant.health}.`);
     });
 
   $('#drought').click(function() {
     newPlant.drought();
+    $('.displayHealth').text(`The health of ${newPlant.name} is currenctly ${newPlant.health}.`);
     try {
       const issue = newPlant.problem;
       if (issue instanceof Error) {
@@ -58,10 +60,14 @@ $(document).ready(function() {
         $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
         $('.showTemp').text(`The temperature in Fahrenheit is ${response.main.temp_max}.`);
         $('.clouds').text(`Some kind of cloud info we don't yet understand ${response.clouds.all}`);
-        if (response.main.temp >= 250) {
-          $('.tempMessage').text("damn its hot out");
+        if ((response.main.temp_max >= 60) && (response.main.temp_max <= 80) ) {
+          $('.tempMessage').text("mmmm just right");
+          newPlant.health += 5;
+          $('.displayHealth').text(`The health of ${newPlant.name} is currenctly ${newPlant.health}.`)
         } else {
           $('.tempMessage').text("cold AF");
+          newPlant.health -= 5;
+          $('.displayHealth').text(`The health of ${newPlant.name} is currenctly ${newPlant.health}.`)
         }
       },
       error: function() {
