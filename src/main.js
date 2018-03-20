@@ -79,4 +79,33 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('#weatherLocation2').click(function() {
+    let city = $('#location2').val();
+    $('location2').val('');
+    let request = new XMLHttpRequest();
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e53984fe138f468582129bb1286abf8d&units=imperial`
+
+    function getElements(response) {
+      $('.showHumidity2').text(`The humidity in ${city} is ${response.main.humidity}%`);
+    }
+
+    // getElements = function(response) {
+    //   $('.showHumidity2').text(`The humidity in ${city} is ${response.main.humidity}%`);
+    // }
+
+    request.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        let response = JSON.parse(this.responseText);
+        console.log(response,22)
+        getElements(response);
+      }
+    }
+
+    request.open("GET", url, true);
+    request.send();
+    // getElements(response);
+
+  });
+
 });

@@ -20,7 +20,7 @@ export class Plant {
   drought() {
     setInterval(()=>{
       this.health -=10;
-    }, 1000);
+    }, 50000);
     const new_error = "PLANT IS ABOUT TO DIEEEEEE";
     this.problem = new Error(new_error);
   }
@@ -43,14 +43,12 @@ export class Plant {
   }
 
   water() {
-    setInterval(() => {
       this.health += 5;
-      this.height+=2;
+      this.height +=2;
       if ((this.health >= 70) && (this.health % 10 == 0)) {
         console.log('fruit coming?');
         this.fruit++;
-      }
-    }, 1000);
+    }
   }
 
   checkHealth() {
@@ -58,4 +56,8 @@ export class Plant {
       $('.displayHealth').text('The health of '+ this.name +' is currenctly '+ this.health);
     }, 1000);
   }
+
+
+
+
 }
