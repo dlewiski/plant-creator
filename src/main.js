@@ -81,16 +81,20 @@ $(document).ready(function() {
   });
 
   $('#weatherLocation2').click(function() {
+    let myAPIKey = process.env.API_KEY
+    console.log(myAPIKey)
+    let myAPIKey2 = process.env.API_KEY.length
+    console.log(myAPIKey2)
     let city = $('#location2').val();
     $('location2').val('');
     let request = new XMLHttpRequest();
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e53984fe138f468582129bb1286abf8d&units=imperial`
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myAPIKey}&units=imperial`
 
     function getElements(response) {
       $('.showHumidity2').text(`The humidity in ${city} is ${response.main.humidity}%`);
     }
 
-    // getElements = function(response) {
+    // getElements = function() {
     //   $('.showHumidity2').text(`The humidity in ${city} is ${response.main.humidity}%`);
     // }
 
